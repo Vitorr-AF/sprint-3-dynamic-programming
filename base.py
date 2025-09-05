@@ -50,6 +50,48 @@ def busca_binaria(lista, alvo):
     return -1
 
 
+def merge_sort(lista, variavel):
+    if len(lista) <= 1:
+        return lista
+    
+    meio = len(lista) // 2
+    esquerda = merge_sort(lista[:meio], variavel)
+    direita = merge_sort(lista[meio:], variavel)
+
+    return merge(esquerda, direita, variavel)
+
+
+def merge(esquerda, direita, variavel):
+    resultado = []
+    i = j = 0
+
+    while i < len(esquerda) and j < len(direita):
+        if esquerda[i][variavel] <= direita[j][variavel]:
+            resultado.append(esquerda[i])
+            i += 1
+        else:
+            resultado.append(direita[j])
+            j += 1
+
+    resultado.extend(esquerda[i:])
+    resultado.extend(direita[j:])
+    return resultado
+
+
+def quick_sort(lista, variavel):
+    if len(lista) <= 1:
+        return lista
+    menor = []
+    maior = []
+
+    for x in lista[1:]:
+        if x[variavel] > lista[0][variavel]:
+            maior.append(x)
+        else:
+            menor.append(x)
+    final = quick_sort(menor, variavel) + [lista[0]] + quick_sort(maior, variavel)
+
+    return final
 
 #Testes de funções
 def testar():
@@ -78,5 +120,24 @@ def testar():
     print(f"Resultado busca linear: {busca_linear(insumos, 'gaze')}")
     print(f"Resultado busca binária: {busca_binaria(insumos, 'gaze')}")
 
+    print("\n---------------------\n")
+
+    insumos = [
+    {"nome": "Álcool", "quantidade": 50, "validade": "2025-12-31"},
+    {"nome": "Luvas", "quantidade": 200, "validade": "2024-06-30"},
+    {"nome": "Máscara", "quantidade": 150, "validade": "2023-11-15"},
+    {"nome": "Água oxigenada", "quantidade": 75, "validade": "2025-01-20"}
+    ]
+
+    insumos_ordenados1 = merge_sort(insumos, "quantidade")
+    insumos_ordenados2 = quick_sort(insumos, "quantidade")
+
+
+    print("Resultado do merge sort")
+    for x in insumos_ordenados1:
+        print(x)
+    print("\nResultado do quick sort:")
+    for x in insumos_ordenados2:
+        print(x)
 
 testar()
