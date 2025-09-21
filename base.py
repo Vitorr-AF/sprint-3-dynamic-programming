@@ -2,12 +2,13 @@
 
 
 # Implementação de fila
+# O(1)
 def adicionar_consumo(material, horario, fila):
     fila.append({"material": material, "horario": horario})
 
     return fila
 
-
+# O(n^2)
 def ler_consumos(fila):
     while fila != []:
         print(f"Material: {fila[0]['material']}\nHorário: {fila[0]['horario']}")
@@ -15,18 +16,20 @@ def ler_consumos(fila):
 
 
 #Implementação de pilha
+# O(1)
 def adicionar_consulta(consulta, consumo, pilha):
     pilha.append({"consulta": consulta, "consumo": consumo})
 
     return pilha
 
-
+#O(n)
 def ler_consultas(pilha):
     while pilha != []:
         info = pilha.pop()
         print(f"Consulta: {info['consulta']}\nConsumo: {info['consumo']}")
 
-
+#algoritimos de busca
+# O(n)
 def busca_linear(lista, alvo):
     
     for x, y in enumerate(lista):
@@ -35,7 +38,7 @@ def busca_linear(lista, alvo):
 
     return -1
 
-
+# O(log n)
 def busca_binaria(lista, alvo):
     f = len(lista) - 1
     c = 0
@@ -49,7 +52,8 @@ def busca_binaria(lista, alvo):
             c = i_atual+1
     return -1
 
-
+#algoritimos de ordenação
+# O (log n)
 def merge_sort(lista, variavel):
     if len(lista) <= 1:
         return lista
@@ -60,7 +64,7 @@ def merge_sort(lista, variavel):
 
     return merge(esquerda, direita, variavel)
 
-
+# O (n)
 def merge(esquerda, direita, variavel):
     resultado = []
     i = j = 0
@@ -77,7 +81,7 @@ def merge(esquerda, direita, variavel):
     resultado.extend(direita[j:])
     return resultado
 
-
+# O (n^2) em listas ordenadas
 def quick_sort(lista, variavel):
     if len(lista) <= 1:
         return lista
