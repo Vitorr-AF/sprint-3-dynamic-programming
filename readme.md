@@ -1,3 +1,10 @@
+# Membros do grupo:
+- Ana Laura - RM 554375
+- Gerônimo Augusto - RM 557170
+- Ianny raquel - RM 559096
+- Murilo Cordeiro - RM 556727
+- Vitor Augusto - RM 555469
+
 # Controle de Consumo de Insumos em Unidades de Diagnóstico
 
 Este projeto simula o **registro e análise do consumo diário de insumos** (reagentes, descartáveis, etc.) em unidades de diagnóstico.  
